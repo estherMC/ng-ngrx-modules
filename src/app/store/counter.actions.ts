@@ -17,3 +17,8 @@ export const increment = createAction(
 // }
 
 // export type CounterActions = IncrementAction;
+
+export const decrement = createAction(
+    '[Counter] Decrement',
+    props<{value: number}>()
+)
