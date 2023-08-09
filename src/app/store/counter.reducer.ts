@@ -1,5 +1,7 @@
-import { createReducer, on } from "@ngrx/store";
-import { increment } from "./counter.actions";
+// import { createReducer, on } from "@ngrx/store";
+import { Action } from "@ngrx/store";
+import { CounterActions, INCREMENT, IncrementAction } from "./counter.actions";
+// import { increment } from "./counter.actions";
 
 //this initialState pot ser un objecte, un string, un boolean, un number...
 const initialState = 0;
@@ -11,9 +13,10 @@ const initialState = 0;
 // );
 
 //Alternative to use (under the hood creates the same):
-export function counterReducer(state = initialState, action: any) {
-    if (action.type === '[Counter] Increment'){
-        return state + action.value;
+// Action is needed when we use strict to true
+export function counterReducer(state = initialState, action: CounterActions | Action) {
+    if (action.type === INCREMENT){
+        return state + (action as IncrementAction).value;
     }
     return state;
 }
